@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Introduction &#8212; PyPackProxy 0.0.10 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration" href="config.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PyPackProxy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#web-interface">Web-Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-pypackproxy">Running PyPackProxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pip-configuration">PIP configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="overview.html" title="previous chapter">Overview</a></li>
+      <li>Next: <a href="config.html" title="next chapter">Configuration</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>PyPackProxy is a caching proxy for Python package indexes (repositories) that are
+compliant to <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0503"><strong>PEP 503</strong></a> (Simple Repository API).</p>
+<p>Beside caching files from an external repository PyPackProxy can host customized files for
+external projects (e.g. wheels created for projects that provide only source packages) or
+private projects (names must be different from projects in the repository).</p>
+<p>See also: <a class="reference internal" href="config.html"><span class="doc">Configuration</span></a></p>
+<div class="section" id="web-interface">
+<h2>Web-Interface<a class="headerlink" href="#web-interface" title="Permalink to this headline">¶</a></h2>
+<p>PyPackProxy provides a simple web-interface. It shows on its startpage a list with
+all locally stored projects. The names are links to the project pages
+(if not disabled; see <a class="reference internal" href="config.html"><span class="doc">Configuration</span></a>).</p>
+<p>In the administration area new project directories can be created or deleted, files can
+be uploaded to or deleted from those directories.
+Admin access can be disabled (see: <a class="reference internal" href="config.html"><span class="doc">Configuration</span></a>).</p>
+</div>
+<div class="section" id="running-pypackproxy">
+<h2>Running PyPackProxy<a class="headerlink" href="#running-pypackproxy" title="Permalink to this headline">¶</a></h2>
+<p>To run PyPackProxy type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pypackproxy path/to/config.file
+</pre></div>
+</div>
+</div>
+<div class="section" id="pip-configuration">
+<h2>PIP configuration<a class="headerlink" href="#pip-configuration" title="Permalink to this headline">¶</a></h2>
+<p>To use PyPackProxy with PIP use the <code class="docutils literal notranslate"><span class="pre">--index-url</span></code> command line argument
+or set the <code class="docutils literal notranslate"><span class="pre">index-url</span></code> option in <code class="docutils literal notranslate"><span class="pre">pip.conf</span></code>. The url must be the base URL of
+PyPackProxy with the path <code class="docutils literal notranslate"><span class="pre">/simple</span></code> appended, e.g.
+<code class="docutils literal notranslate"><span class="pre">https://pypp.example.com:8888/simple</span></code>.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Andreas Suhre.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

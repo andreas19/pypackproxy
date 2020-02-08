@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Configuration &#8212; PyPackProxy 0.0.10 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PyPackProxy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#section-pypackproxy">Section [pypackproxy]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#section-server">Section [server]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#section-proxy">Section [proxy]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#section-logging">Section [logging]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="intro.html" title="previous chapter">Introduction</a></li>
+      <li>Next: <a href="license.html" title="next chapter">License</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>All paths must be absolute!</p>
+<div class="section" id="section-pypackproxy">
+<h2>Section [pypackproxy]<a class="headerlink" href="#section-pypackproxy" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>index-url</dt><dd><p>The URL of the package index (optional; default: <a class="reference external" href="https://pypi.org/simple">https://pypi.org/simple</a>).</p>
+</dd>
+<dt>project-url</dt><dd><p>The web-interface can show links to project pages on the startpage. The poject-url
+must contain the placeholder <code class="docutils literal notranslate"><span class="pre">{}</span></code> which will be replaced with the project name
+(default: <a class="reference external" href="https://pypi.org/project">https://pypi.org/project</a>/{}/). To show no links: <code class="docutils literal notranslate"><span class="pre">project-url=false</span></code>.</p>
+</dd>
+<dt>storage-path</dt><dd><p>The path to the directory where the package files are stored (required; must exist).</p>
+</dd>
+<dt>admin-user</dt><dd><p>The login of the admin user (min. 4 characters; default: admin).</p>
+</dd>
+<dt>admin-pass</dt><dd><p>The password for the admin user (min. 8 characters; required).
+The admin login can be disabled with <code class="docutils literal notranslate"><span class="pre">admin-pass=false</span></code>.</p>
+</dd>
+<dt>timeout</dt><dd><p>The timeout in seconds for requests to the package index (optional; default: 30.0).</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-server">
+<h2>Section [server]<a class="headerlink" href="#section-server" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>host</dt><dd><p>Host and port of the server, e.g. example.com:80 (required).</p>
+</dd>
+<dt>daemonize</dt><dd><p>Whether to daemonize the server process (optional; default: yes).</p>
+</dd>
+<dt>pidfile</dt><dd><p>Path to the PID file (optional).</p>
+</dd>
+<dt>user</dt><dd><p>The user under which to run the server when started as root, e.g. when using
+a port &lt; 1024 (optional).</p>
+</dd>
+<dt>group</dt><dd><p>Group for user (optional; default: primary group of user).</p>
+</dd>
+<dt>ssl_certificate</dt><dd><p>Path to the certificate file (required for HTTPS).</p>
+</dd>
+<dt>ssl_private_key</dt><dd><p>Path to the private key file (required for HTTPS).</p>
+</dd>
+<dt>ssl_certificate_chain</dt><dd><p>Path to the certificate chain file (optional).</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-proxy">
+<h2>Section [proxy]<a class="headerlink" href="#section-proxy" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>proxy-url</dt><dd><p>The URL of the HTTP-Proxy (optional).</p>
+</dd>
+<dt>proxy-user</dt><dd><p>The user for proxy authentication (optional).</p>
+</dd>
+<dt>proxy-pass</dt><dd><p>The password for proxy authentication (optional).</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="section-logging">
+<h2>Section [logging]<a class="headerlink" href="#section-logging" title="Permalink to this headline">¶</a></h2>
+<p>The application has two log files: An access log, which logs the HTTP requests and
+uses the <a class="reference external" href="https://en.wikipedia.org/wiki/Common_Log_Format">common log format</a>,
+and a message log which logs all other messages.</p>
+<p>Logging is disabled by default.</p>
+<p>The application can do a rollover of the log files at a predetermined size
+of <em>*-size</em> bytes. It will keep up to <em>*-count</em> backups of older files.
+If <em>*-size</em> or <em>*-count</em> are 0 rollover will never occur and the files
+will grow indefinitely.</p>
+<p>‘M’ or ‘K’ can be appended to the <em>*-size</em> options for Mibi and
+KiBi bytes respectively.</p>
+<dl class="simple">
+<dt>access-file</dt><dd><p>Path to access log file (optional; directory must exist).</p>
+</dd>
+<dt>message-file</dt><dd><p>Path to message log file (optional; directory must exist).</p>
+</dd>
+<dt>access-size</dt><dd><p>Max. access log size in bytes (optional; default: 0).</p>
+</dd>
+<dt>message-size</dt><dd><p>Max. message log size in bytes (optional; default: 0).</p>
+</dd>
+<dt>access-count</dt><dd><p>Number of max. backups of access log files (optional; default: 1).</p>
+</dd>
+<dt>message-count</dt><dd><p>Number of max. backups of message log files (optional; default: 1).</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Andreas Suhre.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

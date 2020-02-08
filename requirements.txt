@@ -1,0 +1,5 @@
+cherrypy ~= 18.5
+packaging >= 20.1
+plac ~= 1.1
+requests >= 2.22.0
+salmagundi >= 0.11.3

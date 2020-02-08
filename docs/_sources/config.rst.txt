@@ -1,0 +1,103 @@
+Configuration
+=============
+
+All paths must be absolute!
+
+Section [pypackproxy]
+---------------------
+
+index-url
+   The URL of the package index (optional; default: https://pypi.org/simple).
+
+project-url
+   The web-interface can show links to project pages on the startpage. The poject-url
+   must contain the placeholder ``{}`` which will be replaced with the project name
+   (default: https://pypi.org/project/{}/). To show no links: ``project-url=false``.
+
+storage-path
+   The path to the directory where the package files are stored (required; must exist).
+
+admin-user
+   The login of the admin user (min. 4 characters; default: admin).
+
+admin-pass
+   The password for the admin user (min. 8 characters; required).
+   The admin login can be disabled with ``admin-pass=false``.
+
+timeout
+   The timeout in seconds for requests to the package index (optional; default: 30.0).
+
+Section [server]
+----------------
+
+host
+   Host and port of the server, e.g. example.com:80 (required).
+
+daemonize
+   Whether to daemonize the server process (optional; default: yes).
+
+pidfile
+   Path to the PID file (optional).
+
+user
+   The user under which to run the server when started as root, e.g. when using
+   a port < 1024 (optional).
+
+group
+   Group for user (optional; default: primary group of user).
+
+ssl_certificate
+   Path to the certificate file (required for HTTPS).
+
+ssl_private_key
+   Path to the private key file (required for HTTPS).
+
+ssl_certificate_chain
+   Path to the certificate chain file (optional).
+
+Section [proxy]
+---------------
+
+proxy-url
+  The URL of the HTTP-Proxy (optional).
+
+proxy-user
+  The user for proxy authentication (optional).
+  
+proxy-pass
+  The password for proxy authentication (optional).
+
+Section [logging]
+-----------------
+
+The application has two log files: An access log, which logs the HTTP requests and
+uses the `common log format <https://en.wikipedia.org/wiki/Common_Log_Format>`_,
+and a message log which logs all other messages.
+
+Logging is disabled by default.
+
+The application can do a rollover of the log files at a predetermined size
+of *\*-size* bytes. It will keep up to *\*-count* backups of older files.
+If *\*-size* or *\*-count* are 0 rollover will never occur and the files
+will grow indefinitely.
+
+'M' or 'K' can be appended to the *\*-size* options for Mibi and
+KiBi bytes respectively.
+
+access-file
+   Path to access log file (optional; directory must exist).
+
+message-file
+   Path to message log file (optional; directory must exist).
+
+access-size
+   Max. access log size in bytes (optional; default: 0).
+
+message-size
+   Max. message log size in bytes (optional; default: 0).
+
+access-count
+   Number of max. backups of access log files (optional; default: 1).
+
+message-count
+   Number of max. backups of message log files (optional; default: 1).

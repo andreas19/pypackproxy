@@ -1,0 +1,31 @@
+Overview
+========
+
+A caching proxy for Python package indexes. It should work with every
+package index that is compliant with :PEP:`503` Simple Repository API
+(but only tested with `PyPI <https://pypi.org>`_).
+
+Installation
+------------
+
+.. highlight:: none
+
+::
+
+# pip install pypackproxy
+
+
+Requirements
+------------
+
+.. include:: requirements.incl
+
+
+Links
+-----
+
+- PyPI: https://pypi.org/project/pypackproxy/
+- GitHub: https://github.com/andreas19/pypackproxy/
+
+
+.. include:: ../../CHANGELOG.md
