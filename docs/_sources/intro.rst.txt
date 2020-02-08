@@ -1,10 +1,10 @@
 Introduction
 ============
 
-PyPackProxy is a caching proxy for Python package indexes (repositories) that are
-compliant to :PEP:`503` (Simple Repository API).
+PyPackProxy is a caching proxy for Python package indexes (repositories) that
+conform to :PEP:`503` (Simple Repository API).
 
-Beside caching files from an external repository PyPackProxy can host customized files for
+Besides caching files from an external repository PyPackProxy can host customized files for
 external projects (e.g. wheels created for projects that provide only source packages) or
 private projects (names must be different from projects in the repository).
 
@@ -18,8 +18,7 @@ all locally stored projects. The names are links to the project pages
 (if not disabled; see :doc:`config`).
 
 In the administration area new project directories can be created or deleted, files can
-be uploaded to or deleted from those directories.
-Admin access can be disabled (see: :doc:`config`).
+be uploaded to or deleted from those directories. Admin access can be disabled (see: :doc:`config`).
 
 Running PyPackProxy
 ~~~~~~~~~~~~~~~~~~~

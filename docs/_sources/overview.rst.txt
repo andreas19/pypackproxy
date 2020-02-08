@@ -2,7 +2,7 @@ Overview
 ========
 
 A caching proxy for Python package indexes. It should work with every
-package index that is compliant with :PEP:`503` Simple Repository API
+package index that conforms to :PEP:`503` Simple Repository API
 (but only tested with `PyPI <https://pypi.org>`_).
 
 Installation
