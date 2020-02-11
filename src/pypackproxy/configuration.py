@@ -9,7 +9,8 @@ from cherrypy.process.plugins import Daemonizer, PIDFile, DropPrivileges
 from salmagundi.strings import split_host_port
 
 from . import __version__, PYPP_DEBUG, PROG_NAME
-from .utils import check_path, check_url, file_size, check_str, pos_float
+from .utils import (check_path, check_url, file_size, check_str,
+                    pos_float, pos_int)
 
 
 _CONFIG_SPEC = (f'{__package__}.data', 'config_spec.ini')
@@ -17,7 +18,8 @@ _CONVERTERS = {'hostport': split_host_port,
                'filesize': file_size,
                'login': check_str(4, 'admin-user'),
                'passwd': check_str(8, 'admin-pass', True),
-               'posfloat': pos_float}
+               'posfloat': pos_float,
+               'posint': pos_int}
 
 
 def configure(cfgfile):
@@ -34,10 +36,13 @@ def configure(cfgfile):
         'response.headers.Server': f'{PROG_NAME}/{__version__}',
         'server.socket_host': host,
         'server.socket_port': port,
-        'engine.autoreload.on': PYPP_DEBUG,
+        'engine.autoreload.on': False,
         'request.show_tracebacks': PYPP_DEBUG,
         'request.show_mismatched_params': PYPP_DEBUG,
     })
+    if PYPP_DEBUG:
+        cherrypy.engine.signal_handler.handlers['SIGUSR2'] =\
+            lambda: cherrypy.engine.restart()
     if cfg['server', 'daemonize']:
         Daemonizer(cherrypy.engine).subscribe()
         cherrypy.engine.signal_handler.handlers['SIGUSR1'] = None
@@ -62,7 +67,11 @@ def _storage_path(cfg):
 
 
 def _index_url(cfg):
-    check_url(cfg['pypackproxy', 'index-url'], 'index-url')
+    index_url = cfg['pypackproxy', 'index-url']
+    if not index_url or index_url.lower() == 'false':
+        cfg['pypackproxy', 'index-url'] = False
+        return
+    check_url(index_url, 'index-url')
 
 
 def _project_url(cfg):

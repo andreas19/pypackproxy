@@ -57,6 +57,13 @@ def file_size(s):
 
 def pos_float(s):
     x = float(s)
+    if x < 0.0:
+        raise ValueError('value must be >= 0.0')
+    return x
+
+
+def pos_int(s):
+    x = int(s)
     if x < 0:
         raise ValueError('value must be >= 0')
     return x

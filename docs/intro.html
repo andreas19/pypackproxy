@@ -91,7 +91,13 @@
 conform to <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0503"><strong>PEP 503</strong></a> (Simple Repository API).</p>
 <p>Besides caching files from an external repository PyPackProxy can host customized files for
 external projects (e.g. wheels created for projects that provide only source packages) or
-private projects (names must be different from projects in the repository).</p>
+private projects (names must be different from projects in the repository). If the external
+repository in not available or if PyPackProxy is configured to run without one, all requests
+from PIP will be served from locally stored projects.</p>
+<p>When not using an external package repository (<code class="docutils literal notranslate"><span class="pre">index-url=false</span></code>) the package files must be
+downloaded manually (e.g. with <a class="reference external" href="https://pip.pypa.io/en/stable/reference/pip_download/">pip download</a>)
+and put in the project directories within the <code class="docutils literal notranslate"><span class="pre">storage-path</span></code> directory.
+The name of a project directory is the lower-case project name.</p>
 <p>See also: <a class="reference internal" href="config.html"><span class="doc">Configuration</span></a></p>
 <div class="section" id="web-interface">
 <h2>Web-Interface<a class="headerlink" href="#web-interface" title="Permalink to this headline">¶</a></h2>

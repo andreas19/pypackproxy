@@ -92,11 +92,12 @@
 <div class="section" id="section-pypackproxy">
 <h2>Section [pypackproxy]<a class="headerlink" href="#section-pypackproxy" title="Permalink to this headline">¶</a></h2>
 <dl class="simple">
-<dt>index-url</dt><dd><p>The URL of the package index (optional; default: <a class="reference external" href="https://pypi.org/simple">https://pypi.org/simple</a>).</p>
+<dt>index-url</dt><dd><p>The base URL of the package repository (optional; default: https://pypi.org/simple).
+Can be disabled with <code class="docutils literal notranslate"><span class="pre">index-url=false</span></code>.</p>
 </dd>
 <dt>project-url</dt><dd><p>The web-interface can show links to project pages on the startpage. The poject-url
-must contain the placeholder <code class="docutils literal notranslate"><span class="pre">{}</span></code> which will be replaced with the project name
-(default: <a class="reference external" href="https://pypi.org/project">https://pypi.org/project</a>/{}/). To show no links: <code class="docutils literal notranslate"><span class="pre">project-url=false</span></code>.</p>
+must contain the placeholder <code class="docutils literal notranslate"><span class="pre">{}</span></code> which will be replaced with the lower case project name
+(default: https://pypi.org/project/{}/). To show no links: <code class="docutils literal notranslate"><span class="pre">project-url=false</span></code>.</p>
 </dd>
 <dt>storage-path</dt><dd><p>The path to the directory where the package files are stored (required; must exist).</p>
 </dd>
@@ -106,6 +107,8 @@ must contain the placeholder <code class="docutils literal notranslate"><span cl
 The admin login can be disabled with <code class="docutils literal notranslate"><span class="pre">admin-pass=false</span></code>.</p>
 </dd>
 <dt>timeout</dt><dd><p>The timeout in seconds for requests to the package index (optional; default: 30.0).</p>
+</dd>
+<dt>retries</dt><dd><p>Number of retries for connection attempts to the package index (optional; default: 5).</p>
 </dd>
 </dl>
 </div>

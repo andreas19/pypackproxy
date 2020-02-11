@@ -18,7 +18,7 @@ class Packs:
         self._storage = cfg['storage-path']
         self._proxies = cfg['proxies']
         self._timeout = cfg['timeout']
-        self._user_agent = cfg["user-agent"]
+        self._headers = {'User-Agent': cfg['user-agent']}
 
     @cherrypy.expose
     def default(self, project, proto, *args):
@@ -30,13 +30,14 @@ class Packs:
             url = f'{proto}//{urlunquote("/".join(args))}'
             try:
                 r = requests.get(url, stream=True,
-                                 headers={'User-Agent': self._user_agent},
-                                 proxies=self._proxies, timeout=self._timeout)
+                                 headers=self._headers,
+                                 proxies=self._proxies,
+                                 timeout=self._timeout)
             except Exception as ex:
                 msg = str(ex)
                 cherrypy.log(msg)
                 raise cherrypy.HTTPError(message=msg)
-            if r.status_code == requests.codes.ok:
+            if r.status_code == requests.codes.OK:
                 os.makedirs(os.path.dirname(file_path), exist_ok=True)
                 resp_headers = cherrypy.response.headers
                 resp_headers['Content-Type'] = r.headers['Content-Type']

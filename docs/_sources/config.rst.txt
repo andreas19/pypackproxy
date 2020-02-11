@@ -7,12 +7,13 @@ Section [pypackproxy]
 ---------------------
 
 index-url
-   The URL of the package index (optional; default: https://pypi.org/simple).
+   The base URL of the package repository (optional; default: https\://pypi.org/simple).
+   Can be disabled with ``index-url=false``.
 
 project-url
    The web-interface can show links to project pages on the startpage. The poject-url
-   must contain the placeholder ``{}`` which will be replaced with the project name
-   (default: https://pypi.org/project/{}/). To show no links: ``project-url=false``.
+   must contain the placeholder ``{}`` which will be replaced with the lower case project name
+   (default: https\://pypi.org/project/{}/). To show no links: ``project-url=false``.
 
 storage-path
    The path to the directory where the package files are stored (required; must exist).
@@ -26,6 +27,9 @@ admin-pass
 
 timeout
    The timeout in seconds for requests to the package index (optional; default: 30.0).
+
+retries
+   Number of retries for connection attempts to the package index (optional; default: 5).
 
 Section [server]
 ----------------

@@ -6,7 +6,14 @@ conform to :PEP:`503` (Simple Repository API).
 
 Besides caching files from an external repository PyPackProxy can host customized files for
 external projects (e.g. wheels created for projects that provide only source packages) or
-private projects (names must be different from projects in the repository).
+private projects (names must be different from projects in the repository). If the external
+repository in not available or if PyPackProxy is configured to run without one, all requests
+from PIP will be served from locally stored projects.
+
+When not using an external package repository (``index-url=false``) the package files must be
+downloaded manually (e.g. with `pip download <https://pip.pypa.io/en/stable/reference/pip_download/>`_)
+and put in the project directories within the ``storage-path`` directory.
+The name of a project directory is the lower-case project name.
 
 See also: :doc:`config`
 
