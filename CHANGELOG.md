@@ -1,6 +1,7 @@
 History
 -------
 
+**2020-02-23 (0.3.0)**
  - Use form-based authentication for admin login and enable logout
 
 **2020-02-11 (0.2.0)**
