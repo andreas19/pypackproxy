@@ -4,12 +4,14 @@ from contextlib import ExitStack
 from importlib.resources import path as res_path
 from urllib.parse import urlparse
 
+from . import DATA_PACKAGE
+
 
 def get_favicon_path():
     file_manager = ExitStack()
     atexit.register(file_manager.close)
     path = file_manager.enter_context(
-        res_path(__package__ + '.data', 'favicon.ico'))
+        res_path(DATA_PACKAGE, 'favicon.ico'))
     return str(path)
 
 
@@ -34,15 +36,13 @@ def check_url(url, name):
     return parsed
 
 
-def check_str(length, name, false=False):
-    def f(s):
-        if false and s.lower() == 'false':
-            return False
-        if len(s) < length:
-            raise ValueError(
-                f'{name!r} must be at least {length} characters')
-        return s
-    return f
+def check_passwd(s):
+    if s.lower() == 'false':
+        return False
+    if len(s) < 8:
+        raise ValueError(
+            'Password must be at least 8 characters long')
+    return s
 
 
 def file_size(s):
@@ -67,11 +67,3 @@ def pos_int(s):
     if x < 0:
         raise ValueError('value must be >= 0')
     return x
-
-
-def validate_password(admin_user, admin_pass):
-    def auth(realm, user, passwd):
-        if not admin_pass:
-            return False
-        return user == admin_user and passwd == admin_pass
-    return auth

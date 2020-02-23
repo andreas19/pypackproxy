@@ -8,16 +8,15 @@ import salmagundi.config
 from cherrypy.process.plugins import Daemonizer, PIDFile, DropPrivileges
 from salmagundi.strings import split_host_port
 
-from . import __version__, PYPP_DEBUG, PROG_NAME
-from .utils import (check_path, check_url, file_size, check_str,
+from . import __version__, PYPP_DEBUG, PROG_NAME, DATA_PACKAGE
+from .utils import (check_path, check_url, file_size, check_passwd,
                     pos_float, pos_int)
 
 
-_CONFIG_SPEC = (f'{__package__}.data', 'config_spec.ini')
+_CONFIG_SPEC = (DATA_PACKAGE, 'config_spec.ini')
 _CONVERTERS = {'hostport': split_host_port,
                'filesize': file_size,
-               'login': check_str(4, 'admin-user'),
-               'passwd': check_str(8, 'admin-pass', True),
+               'passwd': check_passwd,
                'posfloat': pos_float,
                'posint': pos_int}
 

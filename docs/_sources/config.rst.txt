@@ -1,7 +1,7 @@
 Configuration
 =============
 
-All paths must be absolute!
+PyPackProxy uses an INI-style configuration file. All paths must be absolute!
 
 Section [pypackproxy]
 ---------------------
@@ -18,12 +18,12 @@ project-url
 storage-path
    The path to the directory where the package files are stored (required; must exist).
 
-admin-user
-   The login of the admin user (min. 4 characters; default: admin).
-
 admin-pass
    The password for the admin user (min. 8 characters; required).
    The admin login can be disabled with ``admin-pass=false``.
+
+admin-expire
+   The time in minutes after which the admin session expires (optional; default: 30)
 
 timeout
    The timeout in seconds for requests to the package index (optional; default: 30.0).
