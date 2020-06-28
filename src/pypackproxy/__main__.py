@@ -10,7 +10,7 @@ from .configuration import configure
 mimetypes.add_type('application/octet-stream', '.whl')
 
 
-def main(config: ('Configuration file',)):
+def main(config: 'Configuration file'):  # noqa: F722
     try:
         cfg = configure(config)
         cherrypy.log('START', 'INFO')
