@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Administration{% endblock %}
+
+{% block links %}
+<a href="/">Startpage</a>
+{% if logged_in %}
+- <a href="?logout=1">Logout</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<h2>Administration</h2>
+
+{% if message %}
+  <div class="message {{'error' if message[1] else 'success'}}">{{message[0]}}</div>
+{% endif %}
+{% endblock %}

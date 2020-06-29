@@ -1,6 +1,8 @@
 History
 -------
 
+ - Switch template engine to Jinja2
+
 **2020-02-23 (0.3.0)**
  - Use form-based authentication for admin login and enable logout
 

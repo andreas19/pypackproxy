@@ -1,0 +1,11 @@
+{% extends "admin.html" %}
+
+{% block content %}
+{{ super() }}
+
+<h3>Login</h3>
+
+<form method="post">
+  Password <input type="password" name="passwd" required autofocus> <button>Send</button>
+</form>
+{% endblock %}

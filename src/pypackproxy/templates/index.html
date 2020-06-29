@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Start{% endblock %}
+
+{% block links %}
+{% if admin_enabled %}
+<a href="/admin/">Administration</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<h2>Locally stored projects: {{projects|length}}</h2>
+
+<ul>
+{% for project in projects %}
+  {% if project_base_url %}
+    <li><a href="{{project_base_url}}{{project}}">{{project}}</a></li>
+  {% else %}
+    <li>${project}</li>
+  {% endif %}
+{% endfor %}
+</ul>
+
+{% endblock %}
