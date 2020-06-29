@@ -1,5 +1,5 @@
 cherrypy ~= 18.5
-mako >= 1.1.1
+jinja2 ~= 2.11
 packaging >= 20.1
 plac ~= 1.1
 requests >= 2.22.0
