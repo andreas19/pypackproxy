@@ -1,6 +1,7 @@
 History
 -------
 
+**2020-06-29 (0.3.1)**
  - Switch template engine to Jinja2
 
 **2020-02-23 (0.3.0)**
