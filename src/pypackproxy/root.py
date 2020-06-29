@@ -13,7 +13,7 @@ from salmagundi.strings import format_bin_prefix
 
 from . import ROOT_PATH
 from .utils import get_favicon_path
-from .renderer import Renderer
+from .renderer import render
 
 ProjectFile = namedtuple('ProjectFile', 'name url size mtime')
 
@@ -47,12 +47,11 @@ class Root:
         self._admin_enabled = bool(cfg['admin-pass'])
         self._storage = cfg['storage-path']
         self._project_url = cfg['project-url']
-        self._renderer = Renderer()
 
     @cherrypy.expose
     def index(self):
-        return self._renderer(
-            'index.mako', admin_enabled=self._admin_enabled,
+        return render(
+            'index.html', admin_enabled=self._admin_enabled,
             project_base_url=project_path if self._project_url else None,
             projects=sorted(os.listdir(self._storage)))
 
@@ -77,8 +76,7 @@ class Root:
         elif passwd:
             message = 'Login failed', True
         if not cherrypy.session.get('logged-in'):
-            return self._renderer('login.mako', message=message,
-                                  logged_in=False)
+            return render('login.html', message=message, logged_in=False)
         if project:
             if delproj:
                 message = self._deldir(delproj)
@@ -86,14 +84,14 @@ class Root:
                 message = self._delfiles(project, delfiles)
             elif upfiles:
                 message = self._upload(project, upfiles)
-            return self._renderer('project.mako', project=project,
-                                  message=message, files=self._files(project),
-                                  logged_in=True)
+            return render('project.html', project=project,
+                          message=message, files=self._files(project),
+                          logged_in=True)
         else:
             if newdir:
                 message = self._newdir(newdir)
-            return self._renderer(
-                'overview.mako', project_base_url='?project=',
+            return render(
+                'overview.html', project_base_url='?project=',
                 message=message, logged_in=True,
                 projects=sorted(os.listdir(self._storage)))
 

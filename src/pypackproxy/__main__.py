@@ -4,7 +4,7 @@ import sys
 import cherrypy
 from cherrypy._cpnative_server import CPHTTPServer
 
-from . import root, packs, simple, __version__, PYPP_DEBUG, PROG_NAME
+from . import renderer, root, packs, simple, __version__, PYPP_DEBUG, PROG_NAME
 from .configuration import configure
 
 mimetypes.add_type('application/octet-stream', '.whl')
@@ -13,6 +13,7 @@ mimetypes.add_type('application/octet-stream', '.whl')
 def main(config: 'Configuration file'):  # noqa: F722
     try:
         cfg = configure(config)
+        renderer.init()
         cherrypy.log('START', 'INFO')
         cherrypy.server.httpserver = CPHTTPServer(cherrypy.server)
         cherrypy.tree.mount(root.Root(cfg), root.path, root.config)
